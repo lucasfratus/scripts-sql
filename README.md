@@ -12,13 +12,12 @@ Este repositório contém soluções para listas de exercícios da matéria Banc
 1. **Clone o repositório**:
    ```bash
    git clone https://github.com/lucasfratus/scripts-sql.git
-
-    Abra o MySQL Workbench.
-    Carregue o script SQL:
-        Navegue até o diretório da lista desejada.
-        Abra o arquivo exemplos.sql para criar as tabelas e inserir os dados necessários.
-        Em seguida, abra o arquivo respostas.sql para visualizar e testar as soluções.
-    Execute os scripts em sua instância do MySQL.
+2. **Abra o MySQL Workbench**.
+3. **Carregue o script SQL:**
+   - Navegue até o diretório da lista desejada.
+   - Abra o arquivo exemplos.sql para criar as tabelas e inserir os dados necessários.
+   - Em seguida, abra o arquivo respostas.sql para visualizar e testar as soluções.
+4. **Execute os scripts em sua instância do MySQL.**
 
 Contribuição
 
