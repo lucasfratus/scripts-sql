@@ -50,3 +50,60 @@ ORDER BY COUNT(*);
 # 10. Verifique a diferença de preços entre o imóvel mais caro e o mais barato.
 SELECT MAX(VLPRECO) - MIN(VLPRECO) AS DIFERENCA_VALOR
 FROM IMOVEL;
+
+# 11. Para cada comprador, exiba o seu código e nome, sua média de valor de ofertas e o seu número de
+# ofertas.
+SELECT C.CDCOMPRADOR, C.NMCOMPRADOR, AVG(O.VLOFERTA) AS MEDIA_OFERTAS, COUNT(*) AS NUM_OFERTAS
+FROM COMPRADOR C JOIN OFERTA O ON C.CDCOMPRADOR=O.CDCOMPRADOR
+GROUP BY CDCOMPRADOR;
+
+# 12. Exiba o total de ofertas realizadas nos anos de 2000, 2001 e 2002.
+SELECT YEAR(DTOFERTA), COUNT(*) AS TOTAL_OFERTAS
+FROM OFERTA
+WHERE YEAR(DTOFERTA) IN (2000,2001,2002)
+GROUP BY YEAR(DTOFERTA);
+
+# 13. Exiba os imóveis do mesmo bairro do imóvel 2. Exclua o imóvel 2 de sua busca.
+SELECT CDIMOVEL, NMENDERECO
+FROM IMOVEL
+WHERE CDBAIRRO=(SELECT CDBAIRRO
+FROM IMOVEL WHERE CDIMOVEL=2) AND CDIMOVEL<>2;
+
+# 14. Exiba os imóveis que custam mais que a média de preços dos imóveis.
+SELECT CDIMOVEL, NMENDERECO
+FROM IMOVEL
+WHERE VLPRECO > (SELECT AVG(VLPRECO) FROM IMOVEL);
+
+# 15. Exiba todos os imóveis com oferta superior à média do valor das ofertas.
+SELECT CDIMOVEL, CDCOMPRADOR, VLOFERTA
+FROM OFERTA
+WHERE VLOFERTA > (SELECT AVG(VLOFERTA) FROM OFERTA);
+
+# 16. Exiba todos os imóveis com preço superior à média de preço dos imóveis do mesmo bairro.
+SELECT CDIMOVEL, NMENDERECO, VLPRECO
+FROM IMOVEL I
+WHERE VLPRECO > (SELECT AVG(VLPRECO) FROM IMOVEL WHERE CDBAIRRO=I.CDBAIRRO);
+
+# 17. Exiba todos os códigos e nomes de compradores e códigos e nomes de vendedores (utilize UNION).
+SELECT CDCOMPRADOR AS CODIGO, NMCOMPRADOR AS NOME
+FROM COMPRADOR
+UNION
+SELECT CDVENDEDOR AS CODIGO, NMVENDEDOR AS NOME
+FROM VENDEDOR;
+
+# 18. Exiba todos os compradores que não tenham ofertas cadastradas.
+SELECT CDCOMPRADOR
+FROM COMPRADOR
+WHERE CDCOMPRADOR NOT IN (SELECT CDCOMPRADOR
+FROM OFERTA);
+
+# 19. Exiba todos os vendedores que não tenham imóveis cadastrados(utilize MINUS).
+SELECT CDVENDEDOR, NMVENDEDOR
+FROM VENDEDOR
+WHERE CDVENDEDOR NOT IN (SELECT CDVENDEDOR FROM IMOVEL);
+
+# 20. Exiba todos os compradores que tenham ofertas cadastradas (utilize INTERSECT).
+SELECT CDCOMPRADOR, NMCOMPRADOR
+FROM COMPRADOR
+WHERE CDCOMPRADOR IN (SELECT CDCOMPRADOR FROM OFERTA);
+
