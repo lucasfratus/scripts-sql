@@ -19,13 +19,6 @@ Este repositório contém soluções para listas de exercícios da matéria Banc
    - Em seguida, abra o arquivo respostas.sql para visualizar e testar as soluções.
 4. **Execute os scripts em sua instância do MySQL.**
 
-Contribuição
-
-Sinta-se à vontade para sugerir melhorias ou enviar correções abrindo uma issue ou um pull request. Sua colaboração será muito bem-vinda!
-Contato
-
-Se tiver dúvidas ou sugestões, entre em contato pelo e-mail fratusdev@outlook.com ou abra uma issue neste repositório.
-
 Nota: Este repositório foi criado com fins acadêmicos e de aprendizado. Os exercícios são baseados em listas de estudo e podem conter adaptações.
 
 
